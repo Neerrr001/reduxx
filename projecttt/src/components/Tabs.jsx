@@ -1,9 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTabs } from "../redux/features/searchSlice";
 
 const Tabs = () => {
-  const tabs = ["Photos", "Videos", "GIF"];
+  const tabs = ["photos", "videos", "gif"];
 
   const dispatch = useDispatch()
 
@@ -15,7 +14,7 @@ const Tabs = () => {
         return (
           <button
             className={`${activeTab == elem ? 'bg-blue-700':' bg-indigo-600'} 
-            transition px-5 py-2 rounded cursor-pointer active:scale-95`}
+            transition px-5 py-2 rounded cursor-pointer uppercase active:scale-95`}
             key={idx}
             onClick={()=>{
                 dispatch(setActiveTabs(elem))
