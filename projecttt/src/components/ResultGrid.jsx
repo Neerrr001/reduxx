@@ -32,7 +32,8 @@ const ResultGrid = () => {
             type:'photo',
             title:item.alt_description,
             thumbnail:item.urls.small,
-            src:item.urls.full
+            src:item.urls.full,
+            url:item.links.html
           }))
         }
         if (activeTab == "videos") {
@@ -43,6 +44,7 @@ const ResultGrid = () => {
             title:item.user.name || 'video',
             thumbnail:item.image,
             src:item.video_files[0].link,
+            url:item.url
           }))
         }
         if (activeTab == "gif") {
@@ -52,7 +54,8 @@ const ResultGrid = () => {
             type:'gif',
             title:item.title,
             thumbnail:item.images.original.url,
-            src:item.images.fixed_height.url
+            src:item.images.fixed_height.url,
+            url:item.bitly_url
           }))
         }
          dispatch(setResults(data)) 
@@ -68,11 +71,11 @@ const ResultGrid = () => {
     if(loading) return <h1>Loading...</h1>
 
   return (
-    <div className='flex flex-wrap w-full justify-between gap-5 overflow-auto px-10'>
+    <div className='flex flex-wrap py-5 w-full justify-between gap-5 overflow-auto px-10'>
       {
         results.map((item,idx)=>{
           return <div key={idx}>
-            <ResultCard item= {item} />
+            <ResultCard item={item} />
             </div>
         })
       }
