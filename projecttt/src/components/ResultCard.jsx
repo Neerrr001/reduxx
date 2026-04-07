@@ -1,8 +1,19 @@
 import React from 'react'
 
 const ResultCard = ({item}) => {
+
+  const addToCollection = (item)=>{
+
+    const oldData = JSON.parse(localStorage.getItem('collection')) || []
+    
+    const newData = [...oldData,item] //... is the spread operator
+    console.log(newData)
+
+  }
+
+
   return (
-    <div className='h-56 relative  w-[21vw] mb-2 bg-white rounded'>
+    <div className='h-56 relative  w-[21vw] mb-2 bg-white rounded-xl overflow-hidden'>
       <a href={item.url} className='h-full'target="_blank">
         {item.type == 'photo' ? <img className='h-full w-full object-cover object-center'
         src={item.src} alt="" />:''}
@@ -11,11 +22,15 @@ const ResultCard = ({item}) => {
         {item.type == 'gif' ? <img className='h-full w-full object-cover object-center'
         src={item.src} alt="" /> :''}
       </a>
-      
-       <div id='bottom'className=' flex justify-between items-center w-full px-6 py-10 absolute text-white bottom-0'>
-        <h2 className='text-lg font-semibold capitalize'>{item.title}</h2>
+
+       <div id='bottom'className=' flex justify-between items-center gap-2 w-full px-6 py-6 absolute text-white bottom-0'>
+        <h2 className='text-lg font-semibold h-14 overflow-hidden capitalize'>{item.title}
+        </h2>
         <button
-         className='px-5 py-2 font-medium cursor-pointer active:scale-95 bg-red-700 text-white rounded'>
+         onClick={()=>{
+          addToCollection(item)
+         }}
+         className='px-4 py-2 font-medium cursor-pointer active:scale-95 bg-red-700 text-white rounded-xl'>
           Save
         </button>
        </div>
