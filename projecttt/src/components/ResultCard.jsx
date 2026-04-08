@@ -1,14 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addCollection, addedToast } from '../redux/features/collectionSlice'
 
 const ResultCard = ({item}) => {
 
+  const dispatch = useDispatch()
+
   const addToCollection = (item)=>{
-
-    const oldData = JSON.parse(localStorage.getItem('collection')) || []
-    
-    const newData = [...oldData,item] //... is the spread operator
-    console.log(newData)
-
+    dispatch(addCollection(item))
+    dispatch(addedToast())
   }
 
 

@@ -20,7 +20,7 @@ const SearchBar = () => {
       onSubmit={(e)=>{
         submitHandler(e)
       }}
-      className='flex bg-gray-800  p-8'>
+      className='flex bg-(--c1)  p-8'>
         <input 
         required
         value={text}
@@ -29,7 +29,7 @@ const SearchBar = () => {
         }}
         className='w-full px-4 py-2 m-4 rounded border-2 outline-none '
         type="text" 
-        placeholder='Search...' />
+        placeholder='Anything...' />
         <button
         className='px-4 py-2 m-4 rounded border-2 cursor-pointer active:scale-95'
         >Search</button>
